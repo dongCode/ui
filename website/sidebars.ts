@@ -136,25 +136,14 @@ module.exports = {
       items: [
         'repo/contributing',
         'repo/testing',
-        'repo/labels',
         {
           type: 'link',
-          label: 'Migration Guides',
-          href: '/migration',
-        },
-        {
-          type: 'link',
-          label: 'Sponsors',
-          href: '/sponsor',
-        },
-        {
-          type: 'link',
-          label: 'Blog',
+          label: '博客',
           href: '/blog',
         },
         {
           type: 'link',
-          label: 'Help',
+          label: '帮助',
           href: '/help',
         },
       ],

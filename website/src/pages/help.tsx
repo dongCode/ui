@@ -1,36 +1,32 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 
-const Help: React.FunctionComponent<{}> = (props) => {
+const Help: React.FunctionComponent<{}> = () => {
   type SupportLinkTypes = {
     content: string;
     title: string;
-    link: string;
-    href: string;
+    link?: string;
+    href?: string;
   };
 
   const supportLinks: SupportLinkTypes[] = [
     {
-      content: 'Learn more using the ',
-      title: 'Browse Docs',
-      link: 'documentation on this site.',
+      content: '掌握文档内容 ',
+      title: '仔细阅读文档',
+      link: '文档链接',
       href: 'docs',
     },
     {
-      content: 'Ask questions about the documentation and project in our ',
-      title: 'Join the community',
-      link: 'Discord Server.',
-      href: 'https://discord.com/invite/e9RBHjkKHa',
+      content: '巩固基础，提升理解',
+      title: 'JavaScript学习',
     },
     {
-      content: `Find out what's new for each release by checking the `,
-      title: 'Stay up to date',
-      link: 'releases tab on the GitHub repo.',
-      href: 'https://github.com/react-native-elements/react-native-elements/releases',
+      content: '提升个人编程能力',
+      title: '阅读源码',
     },
   ];
 
-  const FeatureHeading: React.FunctionComponent<{}> = (props) => {
+  const FeatureHeading: React.FunctionComponent<{}> = () => {
     return (
       <div className="row">
         {supportLinks.map((link) => {
@@ -38,7 +34,8 @@ const Help: React.FunctionComponent<{}> = (props) => {
             <div className="col">
               <h2>{link.title}</h2>
               <p className="padding-horiz--md">
-                {link.content} <a href={link.href}>{link.link}</a>
+                {link.content}{' '}
+                {link.href ? <a href={link.href}>{link.link}</a> : null}
               </p>
             </div>
           );
@@ -51,30 +48,9 @@ const Help: React.FunctionComponent<{}> = (props) => {
     <Layout className="mainContainer documentContainer postContainer">
       <div className="container margin-vert--xl">
         <header className="postHeader">
-          <h2>Need help?</h2>
+          <h2>需要帮助?</h2>
         </header>
-        <p>
-          Even with the great documentation, you're likely to get stuck at some
-          point. If you've encountered a bug with React Native Elements, please{' '}
-          <a
-            href="https://github.com/react-native-elements/react-native-elements/issues/new/choose"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            post an issue
-          </a>{' '}
-          and one of our maintainers will happily reach out to you. No
-          question's too silly to ask but we recommend checking the
-          documentation and{' '}
-          <a
-            href="https://github.com/react-native-elements/react-native-elements/issues"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            existing issues
-          </a>{' '}
-          before opening and a new one.
-        </p>
+        <p>建议如下：</p>
         <div>
           <div className="container text--center margin-bottom--xl">
             <FeatureHeading />
