@@ -1,0 +1,50 @@
+{
+  "name": "@dplus/themed",
+  "version": "4.0.2",
+  "description": "Cross Platform React Native UI Toolkit",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "prepublish": "tsc --composite false",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "react native",
+    "dplus",
+    "themed",
+    "react native ui",
+    "react native components",
+    "ui library",
+    "ios",
+    "android",
+    "bootstrap"
+  ],
+  "scripts": {
+    "npm-publish": "npm publish",
+    "build": "tsc --composite false",
+    "test": "jest",
+    "test:update": "jest -u",
+    "test:ci": "jest --runInBand",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "clean-install": "rimraf node_modules && yarn"
+  },
+  "author": "D",
+  "license": "MIT",
+  "peerDependencies": {
+    "@dplus/base": "4.0.2"
+  },
+  "devDependencies": {
+    "@dplus/base": "4.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/react-native-elements/react-native-elements.git",
+    "directory": "packages/themed"
+  }
+}

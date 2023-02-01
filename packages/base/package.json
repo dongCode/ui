@@ -1,0 +1,58 @@
+{
+  "name": "@dplus/base",
+  "version": "4.0.2",
+  "description": "Cross Platform React Native UI Toolkit",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "prepublish": "tsc --composite false",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+
+  "keywords": [
+    "react",
+    "native",
+    "react native",
+    "dplus",
+    "react native ui",
+    "react native components",
+    "ui library",
+    "ios",
+    "android",
+    "bootstrap"
+  ],
+  "scripts": {
+    "npm-publish": "npm publish",
+    "build": "tsc --composite false",
+    "test": "jest",
+    "test:update": "jest -u",
+    "test:ci": "jest --runInBand",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "clean-install": "rimraf node_modules && yarn"
+  },
+  "author": "D",
+  "license": "MIT",
+  "dependencies": {
+    "@types/react-native-vector-icons": "^6.4.10",
+    "color": "^3.2.1",
+    "deepmerge": "^4.2.2",
+    "hoist-non-react-statics": "^3.3.2",
+    "react-native-ratings": "^8.1.0",
+    "react-native-size-matters": "^0.4.0"
+  },
+  "devDependencies": {
+    "@types/color": "^3.0.3",
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "metro-react-native-babel-preset": "^0.70.2",
+    "react-native-safe-area-context": "4.4.1",
+    "react-native-vector-icons": "^7.1.0"
+  },
+  "peerDependencies": {
+    "react-native-safe-area-context": ">= 3.0.0",
+    "react-native-vector-icons": ">7.0.0"
+  }
+}
