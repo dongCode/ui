@@ -1550,7 +1550,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dplus/base@4.0.1, @dplus/base@workspace:packages/base":
+"@dplus/base@4.0.2, @dplus/base@workspace:packages/base":
   version: 0.0.0-use.local
   resolution: "@dplus/base@workspace:packages/base"
   dependencies:
@@ -1593,9 +1593,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@dplus/themed@workspace:packages/themed"
   dependencies:
-    "@dplus/base": 4.0.1
+    "@dplus/base": 4.0.2
   peerDependencies:
-    "@dplus/base": 4.0.1
+    "@dplus/base": 4.0.2
   languageName: unknown
   linkType: soft
 
