@@ -3,7 +3,7 @@ module.exports = {
     {
       type: 'category',
       label: '开始',
-      items: ['overview', 'installation', 'troubleshooting'],
+      items: ['overview', 'installation'],
       collapsed: false,
     },
     {
