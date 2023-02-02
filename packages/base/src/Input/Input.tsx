@@ -3,19 +3,18 @@ import {
   Text,
   View,
   TextInput,
+  Animated,
+  Easing,
   Platform,
   StyleSheet,
   ViewStyle,
   StyleProp,
   TextStyle,
   TextInputProps,
-  Keyboard,
-  EmitterSubscription,
 } from 'react-native';
 import { renderNode, patchWebProps, defaultTheme, Theme } from '../helpers';
 import { fonts } from '../helpers';
 import { Icon, IconNode } from '../Icon';
-import styles from './InputStyles';
 
 const renderText = (content: any, defaultProps: any, style: StyleProp<any>) =>
   renderNode(Text, content, {
@@ -25,6 +24,10 @@ const renderText = (content: any, defaultProps: any, style: StyleProp<any>) =>
 
 export interface InputProps
   extends React.ComponentPropsWithRef<typeof TextInput> {
+  /**
+   * Shake method
+   */
+  shake?: () => void;
   /**
    * Style for container
    */
@@ -98,24 +101,8 @@ export interface InputProps
 
 export class Input extends React.Component<InputProps & { theme?: Theme }> {
   static displayName = 'Input';
-  keyboardDidHideListener: EmitterSubscription;
-  constructor(props: InputProps) {
-    super(props);
-
-    this.keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
-      this.keyboardDidHide
-    );
-  }
-
-  componentWillUnmount() {
-    this.keyboardDidHideListener.remove();
-  }
-
-  keyboardDidHide = () => {
-    this.input.blur();
-  };
   input: any;
+  shakeAnimationValue = new Animated.Value(0);
 
   focus(): void {
     this.input.focus();
@@ -136,6 +123,19 @@ export class Input extends React.Component<InputProps & { theme?: Theme }> {
   setNativeProps(nativeProps: Partial<TextInputProps>): void {
     this.input.setNativeProps(nativeProps);
   }
+
+  shake = () => {
+    const { shakeAnimationValue } = this;
+    shakeAnimationValue.setValue(0);
+    // Animation duration based on Material Design
+    // https://material.io/guidelines/motion/duration-easing.html#duration-easing-common-durations
+    Animated.timing(shakeAnimationValue, {
+      duration: 375,
+      toValue: 3,
+      easing: Easing.bounce,
+      useNativeDriver: true,
+    }).start();
+  };
 
   render() {
     const {
@@ -161,6 +161,11 @@ export class Input extends React.Component<InputProps & { theme?: Theme }> {
       ...attributes
     } = this.props;
 
+    const translateX = this.shakeAnimationValue.interpolate({
+      inputRange: [0, 0.5, 1, 1.5, 2, 2.5, 3],
+      outputRange: [0, -15, 0, 15, 0, -15, 0],
+    });
+
     const hideErrorMessage = !renderErrorMessage && !errorMessage;
 
     return (
@@ -185,70 +190,100 @@ export class Input extends React.Component<InputProps & { theme?: Theme }> {
           }
         )}
 
-        {leftIcon && (
-          <View
-            style={StyleSheet.flatten([
-              styles.iconContainer,
-              leftIconContainerStyle,
-            ])}
-          >
-            {renderNode(Icon, leftIcon)}
-          </View>
-        )}
-
-        <InputComponent
-          testID="RNE__Input__text-input"
-          underlineColorAndroid="transparent"
-          editable={!disabled}
-          ref={(ref: any) => {
-            this.input = ref;
-          }}
+        <Animated.View
           style={StyleSheet.flatten([
             {
-              color: theme?.colors?.black,
+              flexDirection: 'row',
+              borderBottomWidth: 1,
+              alignItems: 'center',
+              borderColor: theme?.colors?.grey3,
             },
-            styles.input,
-            inputStyle,
-            disabled && styles.disabledInput,
-            disabled && disabledInputStyle,
-            style,
+            inputContainerStyle,
+            { transform: [{ translateX }] },
           ])}
-          placeholderTextColor={theme?.colors?.grey3}
-          {...patchWebProps(attributes)}
-          value={attributes.value?.toString()}
-        />
+        >
+          {leftIcon && (
+            <View
+              style={StyleSheet.flatten([
+                styles.iconContainer,
+                leftIconContainerStyle,
+              ])}
+            >
+              {renderNode(Icon, leftIcon)}
+            </View>
+          )}
 
-        {rightIcon && (
-          <View
-            style={StyleSheet.flatten([
-              styles.iconContainer,
-              rightIconContainerStyle,
-            ])}
-          >
-            {renderNode(Icon, rightIcon)}
-          </View>
-        )}
-        {errorMessage && (
-          <Text
-            {...errorProps}
+          <InputComponent
+            testID="RNE__Input__text-input"
+            underlineColorAndroid="transparent"
+            editable={!disabled}
+            ref={(ref: any) => {
+              this.input = ref;
+            }}
             style={StyleSheet.flatten([
               {
-                margin: 5,
-                fontSize: 12,
-                color: theme?.colors?.error,
+                color: theme?.colors?.black,
+                fontSize: 18,
+                flex: 1,
+                minHeight: 40,
               },
-              errorStyle && errorStyle,
-              hideErrorMessage && {
-                height: 0,
-                margin: 0,
-                padding: 0,
-              },
+              inputStyle,
+              disabled && styles.disabledInput,
+              disabled && disabledInputStyle,
+              style,
             ])}
-          >
-            {errorMessage}
-          </Text>
-        )}
+            placeholderTextColor={theme?.colors?.grey3}
+            {...patchWebProps(attributes)}
+          />
+
+          {rightIcon && (
+            <View
+              style={StyleSheet.flatten([
+                styles.iconContainer,
+                rightIconContainerStyle,
+              ])}
+            >
+              {renderNode(Icon, rightIcon)}
+            </View>
+          )}
+        </Animated.View>
+
+        <Text
+          {...errorProps}
+          style={StyleSheet.flatten([
+            {
+              margin: 5,
+              fontSize: 12,
+              color: theme?.colors?.error,
+            },
+            errorStyle && errorStyle,
+            hideErrorMessage && {
+              height: 0,
+              margin: 0,
+              padding: 0,
+            },
+          ])}
+        >
+          {errorMessage}
+        </Text>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    paddingHorizontal: 10,
+  },
+  disabledInput: {
+    opacity: 0.5,
+  },
+  iconContainer: {
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingRight: 4,
+    marginVertical: 4,
+  },
+});
