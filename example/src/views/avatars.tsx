@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Alert } from 'react-native';
 import _ from 'lodash';
 import { Avatar } from '@dplus/themed';
 import { Header, SubHeader } from '../components/header';
@@ -40,7 +40,7 @@ const Avatars: React.FunctionComponent<AvatarComponentProps> = () => {
     <>
       <Header title="Avatars" view="avatar" />
       <ScrollView>
-        <SubHeader title={'Photo Avatars'} />
+        <SubHeader title={'source 头像'} />
         {_.chunk(dataList, 3).map((chunk, chunkIndex) => (
           <View
             style={{
@@ -60,7 +60,7 @@ const Avatars: React.FunctionComponent<AvatarComponentProps> = () => {
             ))}
           </View>
         ))}
-        <SubHeader title={'Icon Avatars'} />
+        <SubHeader title={'Icon 头像'} />
         <View
           style={{
             flexDirection: 'row',
@@ -130,7 +130,7 @@ const Avatars: React.FunctionComponent<AvatarComponentProps> = () => {
           />
         </View>
 
-        <SubHeader title={'Letter Avatars'} />
+        <SubHeader title={'文字title 头像'} />
         <View
           style={{
             flexDirection: 'row',
@@ -158,7 +158,7 @@ const Avatars: React.FunctionComponent<AvatarComponentProps> = () => {
           />
         </View>
 
-        <SubHeader title={'Badged Avatars'} />
+        <SubHeader title={'带有标记 头像'} />
         <View
           style={{
             flexDirection: 'row',
@@ -170,6 +170,9 @@ const Avatars: React.FunctionComponent<AvatarComponentProps> = () => {
             size={64}
             rounded
             icon={{ name: 'adb', type: 'material' }}
+            onPress={() => {
+              Alert.alert('编辑头像');
+            }}
             containerStyle={{ backgroundColor: 'orange' }}
           >
             <Avatar.Accessory size={24} />
