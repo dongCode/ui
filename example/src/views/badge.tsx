@@ -10,7 +10,7 @@ const badgeComponent = () => {
     <>
       <Header title="Badge" view="badge" />
       <ScrollView>
-        <SubHeader title={'Standard Badge'} />
+        <SubHeader title={'status状态示例 Badge'} />
         <View
           style={{
             flexDirection: 'row',
@@ -24,7 +24,7 @@ const badgeComponent = () => {
           <Badge value="500" status="primary" />
           <Badge value="10" status="warning" />
         </View>
-        <SubHeader title={'Mini Badge'} />
+        <SubHeader title={'status 迷你 Badge'} />
         <View
           style={{
             flexDirection: 'row',
@@ -51,7 +51,7 @@ const badgeComponent = () => {
           <Text style={{ color: '#397af8', paddingVertical: 10 }}>Warning</Text>
         </View>
 
-        <SubHeader title={'Badge as Indicator'} />
+        <SubHeader title={'绝对定位的提示标记'} />
         <View
           style={{
             flexDirection: 'row',
