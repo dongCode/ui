@@ -4,19 +4,12 @@ sidebar_position: 0
 slug: /customizing
 ---
 
-Congrats! You've installed React Native Elements and your immediate question
-goes something like this:
 
-> So umm, how do I change how it looks?
 
-Great question! A UI Kit wouldn't be that useful if the apps everyone built
-looked the same right? For this case React Native Elements provide a number of
-props on each component to enable you to style them how you want.
+定制化组件样式
 
-## Colors
+## Colors 颜色
 
-Setting styles in the theme is as simple as using the name of the component, as
-a key and the props you want to change as the value.
 
 ```jsx
 import { ThemeProvider, createTheme } from '@dplus/themed';
@@ -36,10 +29,8 @@ const App = () => {
 };
 ```
 
-### Using the respective platform's native colors
+### 依据平台 android ios定制化样式
 
-You may want to style your app using the native color palette. You can do this
-using the `colors` object and the `Platform` API.
 
 ```jsx
 import { Platform } from 'react-native';
@@ -57,7 +48,6 @@ const theme = createTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      {/* This button's color will now be the default iOS / Android blue. */}
       <Button title="My Button" />
     </ThemeProvider>
   );
@@ -66,29 +56,16 @@ const App = () => {
 
 ---
 
-## Component Styles
+## 组件样式
 
-_Every_ component from React Native Elements has a container around it. The
-container is just a traditional `<View />` from react native that has some
-styling on it. This default styling prevents components from colliding with each
-other. If you want to change how two components react to each on the screen your
-first stop should be the `containerStyle` prop.
+每个组件最外层都会有 `<View />` 包裹，可以通过 `containerStyle` 修改
 
-Similar to `containerStyle`, components may provide their custom style props
-like `buttonStyle`, `titleStyle` etc. Always refer to the documentation for the
-component to find out which style props it provides.
 
-## Theming Components
+## 统一修改组件样式
 
-While component styles are great for single use, you may want to have the same
-styling for every instance of a component. For example, you may want all your
-buttons to be blue or have the same font. Here are some ways to reuse styles
-with React Native Elements.
 
-### Using Composition
+### 组合
 
-With this approach, we create one component with the styles we want and use that
-instead of the built-in component.
 
 ```tsx
 import React from 'react';
@@ -102,17 +79,10 @@ const App = () => {
 };
 ```
 
-If we want to use a button that's raised in our app, we can use `RaisedButton`
-instead of using `Button`. This component still accepts all the props from the
-normal `Button` just that it has the `raised` prop set by default.
-
 ---
 
-### Using ThemeProvider
+### 通过 ThemeProvider 设置
 
-The previous solution works great for only one component, but imagine having to
-do this for every component you want custom styles for. That could get a bit
-tedious to manage. Thankfully, there's a better way to do this.
 
 ```jsx
 import { ThemeProvider, Button, createTheme } from '@dplus/themed';
@@ -130,25 +100,19 @@ const App = () => {
 };
 ```
 
-:::note
-If you do not specify `theme` in ThemeProvider, it would use [defaultTheme](./customization/theme_object#default-light-colors)
-:::
+### 样式生效顺序
 
-### Order of Styles
-
-What happens now if we want a `Button` that isn't raised? To do that we have to understand the order in which styles are applied.
+顺序
 
 > Internal > Theme > External
 
-#### Internal
+#### Internal 内部
 
-Internal components styles are the styles which are defined in the component
-file. These are applied first.
+组件内部样式
 
-#### Theme
+#### Theme 主题样式
 
-Theme styles are the values that are set by the ThemeProvider If present, these
-are applied second.
+主题样式会覆盖组件内部样式
 
 ```tsx
 import { ThemeProvider, Button, createTheme } from '@dplus/themed';
@@ -172,12 +136,11 @@ const App = () => {
 };
 ```
 
-This will override the white color for the title set in the component's style.
 
-#### External
+#### External 外部样式
 
-External styles are the styles which are set through the component props. These
-are applied last and have the highest precedence.
+
+外部样式优先级最高
 
 ```tsx
 import { ThemeProvider, Button, createTheme } from '@dplus/themed';
@@ -201,11 +164,3 @@ const App = () => {
 };
 ```
 
-This will override both the white color for the title set in the component's
-style as well as the red color set in the theme.
-
-:::info
-
-Remember if you want to override the values set in the theme you can always use component props.
-
-:::

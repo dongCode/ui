@@ -1,17 +1,13 @@
 ---
-title: Theme Provider
+title: Theme Provider 说明
 sidebar_position: 2
 ---
 
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-The previous solution works great for only one component, but imagine having to
-do this for every component you want custom styles for. That could get a bit
-tedious to manage. Thankfully, there's a better way to do this. React Native
-Elements ships with a 3 utilities for large-scale theming.
 
-Firstly you'll want to set up your `ThemeProvider`.
+针对多个组件，统一配置
 
 **Import**
 
@@ -21,7 +17,7 @@ import { ThemeProvider } from '@dplus/themed';
 
 **Usage**
 
-Use [createTheme](#createtheme) to generate a theme object. Then, pass it as a prop to ThemeProvider.
+通过 [createTheme](#createtheme) 生成配置数据
 
 ```jsx
 const theme = createTheme({
@@ -48,26 +44,9 @@ const App = () => {
 };
 ```
 
-:::note
-If you do not specify `theme` in ThemeProvider, it would use [defaultTheme](./theme_object#default-light-colors)
-:::
 
-:::tip
-Want to use custom color? refer [extending colors](./extending#adding-custom-colors)
-:::
+### `createTheme` 
 
-The example above achieves the same goals as the first example — apply the same
-styles to multiple instances of `Button` in the app. However this example
-applies the `raised` prop to every instance of `Button` inside the component
-tree under `ThemeProvider`. Both of these buttons will have the `raised` prop
-set to true.
-
-This is extremely convenient and is made possible through
-[React's Context API](https://reactjs.org/docs/context.html).
-
-### `createTheme`
-
-Generate a theme base on the options received. Then, pass it as a prop to ThemeProvider.
 
 ```tsx
 createTheme({
@@ -82,7 +61,7 @@ createTheme({
 });
 ```
 
-**How it works**
+**原理说明**
 
 <ThemedImage
   alt="how createTheme works internally"
@@ -93,14 +72,13 @@ createTheme({
 />
 
 :::note
-To theme subcomponents such as `ListItem.Title`, in your theme remove the dot and list them as "ListItemTitle"
+配置 `ListItem.Title`, 对应的名称 "ListItemTitle"
 :::
 
 ---
 
 ### `useTheme`
 
-Hook returns `theme`, `updateTheme` & `replaceTheme` from ThemeProvider context or default theme if you did not wrap application with ThemeProvider.
 
 ```tsx
 import { useTheme } from '@dplus/themed';
@@ -115,7 +93,7 @@ function Demo() {
 }
 ```
 
-The updateTheme function merges the theme passed in with the current theme.
+动态更新主题
 
 ```tsx
 updateTheme({
@@ -125,17 +103,12 @@ updateTheme({
 });
 ```
 
-The `replaceTheme` function merges the theme passed in with the default theme.
-
-**Want single-theme?**
 
 ```jsx
 const theme = createTheme({
-  // Use only one color scheme
   lightColors: {
     primary: 'red',
   },
-  // And set that mode as default
   mode: 'light',
   components: {
     Button: {
@@ -144,7 +117,6 @@ const theme = createTheme({
   },
 });
 
-// Your App
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -158,7 +130,7 @@ const App = () => {
 
 ### `useThemeMode`
 
-You can get current theme mode (light or dark) and update it using setMode function from useThemeMode hook.
+快速切换主题
 
 ```tsx
 import { useThemeMode } from '@dplus/themed';
@@ -172,13 +144,11 @@ function Demo() {
 
 ### `withTheme`
 
-**Function Signture**
-
 ```tsx
 withTheme<Props>(Component, ?themeKey)
 ```
 
-**Usage**
+**用法**
 
 ```tsx
 import { withTheme, ThemeProps } from '@dplus/themed';
@@ -189,7 +159,6 @@ type CustomComponentProps = {
 };
 
 const CustomComponent = (props: ThemeProps<CustomComponentProps>) => {
-  // Access theme from props
   const { theme, updateTheme, replaceTheme } = props;
   // ...
 };
@@ -197,10 +166,8 @@ const CustomComponent = (props: ThemeProps<CustomComponentProps>) => {
 export default withTheme<CustomComponentProps>(CustomComponent, 'ComponentKey');
 ```
 
-Don't want to wrap your components with `withTheme`? You can use the `ThemeConsumer` component
-which uses render props!
 
-**Usage**
+**ThemeConsumer 用法**
 
 ```tsx
 import React from 'react';
@@ -218,11 +185,11 @@ const MyComponent = () => (
 
 ---
 
-## More examples
+## 更多
 
-### Using with React Navigation
+### 与 React Navigation 一起使用
 
-[React Navigation](https://reactnavigation.org/) uses it's own [theming](https://reactnavigation.org/docs/themes/), you can use RNE UI's theme with it.
+[React Navigation](https://reactnavigation.org/) 有自己的 [主题样式](https://reactnavigation.org/docs/themes/), 可以通过 useTheme 定制化.
 
 ```tsx
 const Navigation = () => {
@@ -260,7 +227,7 @@ export const App = () => {
 };
 ```
 
-### Switch theme mode with useColorScheme
+###  useColorScheme 用法
 
 ```tsx
 import { useColorScheme } from 'react-native';
@@ -279,7 +246,7 @@ const ColorScheme = ({ children }) => {
 };
 ```
 
-**Usage**
+**用法**
 
 ```tsx
 export const App = () => {
@@ -294,7 +261,7 @@ export const App = () => {
 };
 ```
 
-### Theme mode based background color
+### 通过主题控制元素背景色
 
 ```tsx
 const Background = ({ children }) => {
