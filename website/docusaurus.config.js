@@ -39,8 +39,7 @@ const config = {
           routeBasePath: 'docs',
           sidebarPath: require.resolve('./sidebars.ts'),
           remarkPlugins: [require('./plugins/remark-snackplayer')],
-          editUrl:
-            'https://github.com/react-native-elements/react-native-elements/edit/next/website/',
+          editUrl: 'https://github.com/dongCode/ui/tree/main/website',
         },
         theme: {
           customCss: require.resolve('./static/css/custom.css'),
@@ -58,9 +57,9 @@ const config = {
       disableSwitch: false,
     },
     navbar: {
-      title: 'React Native Elements',
+      title: 'Dplus UI',
       logo: {
-        alt: 'React Native Elements Logo',
+        alt: 'Dplus UI',
         src: '/img/website/logo.png',
       },
       // hideOnScroll: true,
