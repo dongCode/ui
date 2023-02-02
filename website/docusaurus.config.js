@@ -1,11 +1,12 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'React Native Elements' /* title for your website */,
+  title: 'Dplus UI' /* title for your website */,
   tagline: 'Cross Platform React Native UI Toolkit',
-  url: 'https://reactnativeelements.com' /* your website url */,
+  // Set the production url of your site here 暂无线上地址
+  url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/' /* base url for your project */,
-  projectName: 'react-native-elements',
-  organizationName: 'react-native-elements',
+  projectName: 'dplus-ui',
+  organizationName: 'Dplus',
   clientModules: [require.resolve('./plugins/snackPlayerInitializer.js')],
   /* path to images for header/footer */
   favicon: '/img/website/logo.png',
