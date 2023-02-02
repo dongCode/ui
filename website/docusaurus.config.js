@@ -77,7 +77,7 @@ const config = {
         { to: 'blog', label: '博客', position: 'left' },
         // { type: 'search', position: 'right' },
         {
-          href: 'https://github.com/react-native-elements/react-native-elements',
+          href: 'https://github.com/dongCode/ui',
           // label: 'GitHub',
           position: 'right',
           className: 'header-github-link',
