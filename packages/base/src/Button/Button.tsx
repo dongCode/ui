@@ -45,79 +45,79 @@ const positionStyle = {
 export interface ButtonProps
   extends TouchableOpacityProps,
     TouchableNativeFeedbackProps {
-  /** Add button title. */
+  /** 文字 */
   title?: string | React.ReactElement<{}>;
 
-  /** Add additional styling for title component. */
+  /** 包裹文字组件Text样式 */
   titleStyle?: StyleProp<TextStyle>;
 
-  /** Add additional props for Text component. */
+  /** 包裹文字Text属性 */
   titleProps?: TextProps;
 
-  /** Add additional styling for button component. */
+  /** 自定义按钮样式 */
   buttonStyle?: StyleProp<ViewStyle>;
 
-  /** Type of button. */
+  /** 显示按钮类型 solid默认值 clear文字按钮 outline 仅显示边框  */
   type?: 'solid' | 'clear' | 'outline';
 
-  /** Prop to display a loading spinner. */
+  /** 加载提示 */
   loading?: boolean;
 
-  /** Add additional styling for loading component. */
+  /** 加载View样式 */
   loadingStyle?: StyleProp<ViewStyle>;
 
-  /** Add additional props for ActivityIndicator component. */
+  /** 加载View属性  */
   loadingProps?: ActivityIndicatorProps;
 
-  /** Styling for Component container. */
+  /** 最外层View样式 */
   containerStyle?: StyleProp<ViewStyle>;
 
-  /** Displays a centered icon (when no title) or to the left (with text). (can be used along with iconRight as well). Can be an object or a custom component. */
+  /** 图标 */
   icon?: IconNode;
 
-  /** Styling for Icon Component container. */
+  /** 包裹图标的View样式 */
   iconContainerStyle?: StyleProp<ViewStyle>;
 
-  /** Displays Icon to the right of title. Needs to be used along with `icon` prop. */
+  /**  按钮显示在右边，需要配合icon属性使用 */
   iconRight?: boolean;
 
-  /** Displays a linear gradient. See [usage](#linear-gradient). */
+  /** 渐进样式 详情 [用法](#linear-gradient). */
   linearGradientProps?: object;
 
-  /** Component for user interaction. */
+  /** 用户交互组件 默认TouchableOpacity，会根据ios android平台调整*/
   TouchableComponent?: typeof React.Component;
 
-  /** Component for container. */
+  /** 默认值 View 与 linearGradientProps 配合使用 */
   ViewComponent?: typeof React.Component;
 
-  /** Disables user interaction. */
+  /** 禁用 */
   disabled?: boolean;
 
-  /** Style of the button when disabled. */
+  /** 禁用样式 */
   disabledStyle?: StyleProp<ViewStyle>;
 
-  /** Style of the title when disabled. */
+  /** 禁用文字样式 */
   disabledTitleStyle?: StyleProp<TextStyle>;
 
   /** Add raised button styling (optional). Has no effect if `type="clear"`. */
   raised?: boolean;
 
-  /** Displays Icon to the position mentioned. Needs to be used along with `icon` prop. */
+  /** 定义图标显示位置 */
   iconPosition?: 'left' | 'right' | 'top' | 'bottom';
 
-  /** Uppercase button title*/
+  /** 文字大写  */
   uppercase?: boolean;
 
-  /** Radius of button
+  /** 按钮 radius
    * @type   number | sm | md | lg
    */
   radius?: number | StringOmit<keyof ThemeSpacing>;
 
-  /** Button size */
+  /** 大小 */
   size?: 'sm' | 'md' | 'lg';
 
   /**
-   * Color of Button
+   * 颜色
    * @type   string | primary | secondary | success | warning | error
    */
   color?: StringOmit<'primary' | 'secondary' | 'success' | 'error' | 'warning'>;

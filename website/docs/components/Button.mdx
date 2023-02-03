@@ -1,6 +1,6 @@
 ---
 id: button
-title: Button
+title: Button 按钮
 ---
 
 import { IconsStyle } from "@site/src/components/Docs_Icons";
@@ -13,7 +13,6 @@ import Play from "@site/playground/Button/button.playground";
 
 <IconsStyle />
 
-Buttons are touchable elements used to interact with the screen and to perform and operation. They may display text, icons, or both. Buttons can be styled with several props to look a specific way.
 
 ## Usage
 
@@ -37,9 +36,11 @@ Buttons are touchable elements used to interact with the screen and to perform a
   </div>
 </div>
 
-### Variants
+### 类型 type
 
-There are solid button, outline button and clear button types
+默认solic
+文字按钮 clear
+仅显示边框 outline
 
 ```tsx live
 <Stack row align="center" spacing={4}>
@@ -49,9 +50,8 @@ There are solid button, outline button and clear button types
 </Stack>
 ```
 
-### Size
+### 大小 Size
 
-Button can be small medium or large
 
 ```tsx live
 <Stack row align="center" spacing={4}>
@@ -61,7 +61,7 @@ Button can be small medium or large
 </Stack>
 ```
 
-### Colors
+### 颜色 Colors
 
 ```tsx live
 <Stack row align="center" spacing={4}>
@@ -72,7 +72,7 @@ Button can be small medium or large
 </Stack>
 ```
 
-### Disabled
+### 禁用 Disabled
 
 ```tsx live
 <Stack row align="center" spacing={4}>
@@ -82,7 +82,7 @@ Button can be small medium or large
 </Stack>
 ```
 
-### Linear Gradient
+### 渐变色 Linear Gradient
 
 ```tsx live
 <Button
@@ -97,9 +97,8 @@ Button can be small medium or large
 </Button>
 ```
 
-### Icon Button
+### 图标 Icon Button
 
-Can contain an Icon by setting the icon prop or placing an Icon component within the Button.
 
 ```tsx live
 <Button radius={"sm"} type="solid">
@@ -108,7 +107,7 @@ Can contain an Icon by setting the icon prop or placing an Icon component within
 </Button>
 ```
 
-### Loading spinner
+### 加载中 Loading spinner
 
 ```tsx live
 <Button title="Solid" type="solid" loading />
@@ -119,37 +118,37 @@ Can contain an Icon by setting the icon prop or placing an Icon component within
 ## Props
 
 :::note
-Includes all [TouchableOpacityProps](https://reactnative.dev/docs/touchableopacity#props) props.
+可传入原生组件[TouchableOpacityProps](https://reactnative.dev/docs/touchableopacity#props) 的所有属性.
 :::
 
 <div class='table-responsive'>
 
-| Name                  | Type                                                                      | Default | Description                                                                                                                                              |
-| --------------------- | ------------------------------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `TouchableComponent`  | typeof Component                                                          |         | Component for user interaction.                                                                                                                          |
-| `ViewComponent`       | React Component                                                           |         | Component for container.                                                                                                                                 |
-| `buttonStyle`         | View Style                                                                |         | Add additional styling for button component.                                                                                                             |
-| `color`               | `string` \| `primary` \| `secondary` \| `success` \| `warning` \| `error` |         | Color of Button                                                                                                                                          |
-| `containerStyle`      | View Style                                                                |         | Styling for Component container.                                                                                                                         |
-| `disabled`            | boolean                                                                   | `false` | Disables user interaction.                                                                                                                               |
-| `disabledStyle`       | View Style                                                                |         | Style of the button when disabled.                                                                                                                       |
-| `disabledTitleStyle`  | Text Style                                                                |         | Style of the title when disabled.                                                                                                                        |
-| `icon`                | IconNode                                                                  |         | Displays a centered icon (when no title) or to the left (with text). (can be used along with iconRight as well). Can be an object or a custom component. |
-| `iconContainerStyle`  | View Style                                                                |         | Styling for Icon Component container.                                                                                                                    |
-| `iconPosition`        | `left` \| `right` \| `top` \| `bottom`                                    | `left`  | Displays Icon to the position mentioned. Needs to be used along with `icon` prop.                                                                        |
-| `iconRight`           | boolean                                                                   | `false` | Displays Icon to the right of title. Needs to be used along with `icon` prop.                                                                            |
-| `linearGradientProps` | object                                                                    |         | Displays a linear gradient. See [usage](#linear-gradient).                                                                                               |
-| `loading`             | boolean                                                                   | `false` | Prop to display a loading spinner.                                                                                                                       |
-| `loadingProps`        | ActivityIndicatorProps                                                    |         | Add additional props for ActivityIndicator component.                                                                                                    |
-| `loadingStyle`        | View Style                                                                |         | Add additional styling for loading component.                                                                                                            |
-| `radius`              | `number` \| `sm` \| `md` \| `lg`                                          | `xs`    | Radius of button                                                                                                                                         |
-| `raised`              | boolean                                                                   | `false` | Add raised button styling (optional). Has no effect if `type="clear"`.                                                                                   |
-| `size`                | `sm` \| `md` \| `lg`                                                      | `md`    | Button size                                                                                                                                              |
-| `title`               | `string` \| `ReactElement<{}, string` \| `JSXElementConstructor<any>>`    |         | Add button title.                                                                                                                                        |
-| `titleProps`          | TextProps                                                                 |         | Add additional props for Text component.                                                                                                                 |
-| `titleStyle`          | Text Style                                                                |         | Add additional styling for title component.                                                                                                              |
-| `type`                | `solid` \| `clear` \| `outline`                                           | `solid` | Type of button.                                                                                                                                          |
-| `uppercase`           | boolean                                                                   | `false` | Uppercase button title                                                                                                                                   |
+| Name                  | Type                                                                      | Default | Description                                                            |
+| --------------------- | ------------------------------------------------------------------------- | ------- | ---------------------------------------------------------------------- |
+| `TouchableComponent`  | typeof Component                                                          |         | 用户交互组件 默认 TouchableOpacity，会根据 ios android 平台调整        |
+| `ViewComponent`       | React Component                                                           |         | 默认值 View 与 linearGradientProps 配合使用                            |
+| `buttonStyle`         | View Style                                                                |         | 自定义按钮样式                                                         |
+| `color`               | `string` \| `primary` \| `secondary` \| `success` \| `warning` \| `error` |         | 颜色                                                                   |
+| `containerStyle`      | View Style                                                                |         | 最外层 View 样式                                                       |
+| `disabled`            | boolean                                                                   | `false` | 禁用                                                                   |
+| `disabledStyle`       | View Style                                                                |         | 禁用样式                                                               |
+| `disabledTitleStyle`  | Text Style                                                                |         | 禁用文字样式                                                           |
+| `icon`                | IconNode                                                                  |         | 图标                                                                   |
+| `iconContainerStyle`  | View Style                                                                |         | 包裹图标的 View 样式                                                   |
+| `iconPosition`        | `left` \| `right` \| `top` \| `bottom`                                    | `left`  | 定义图标显示位置                                                       |
+| `iconRight`           | boolean                                                                   | `false` | 按钮显示在右边，需要配合 icon 属性使用                                 |
+| `linearGradientProps` | object                                                                    |         | 渐进样式 详情 [用法](#linear-gradient).                                |
+| `loading`             | boolean                                                                   | `false` | 加载提示                                                               |
+| `loadingProps`        | ActivityIndicatorProps                                                    |         | 加载 View 属性                                                         |
+| `loadingStyle`        | View Style                                                                |         | 加载 View 样式                                                         |
+| `radius`              | `number` \| `sm` \| `md` \| `lg`                                          | `xs`    | 按钮 radius                                                            |
+| `raised`              | boolean                                                                   | `false` | Add raised button styling (optional). Has no effect if `type="clear"`. |
+| `size`                | `sm` \| `md` \| `lg`                                                      | `md`    | 大小                                                                   |
+| `title`               | `string` \| `ReactElement<{}, string` \| `JSXElementConstructor<any>>`    |         | 文字                                                                   |
+| `titleProps`          | TextProps                                                                 |         | 包裹文字 Text 属性                                                     |
+| `titleStyle`          | Text Style                                                                |         | 包裹文字组件 Text 样式                                                 |
+| `type`                | `solid` \| `clear` \| `outline`                                           | `solid` | 显示按钮类型 solid 默认值 clear 文字按钮 outline 仅显示边框            |
+| `uppercase`           | boolean                                                                   | `false` | 文字大写                                                               |
 
 </div>
 
