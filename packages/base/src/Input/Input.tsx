@@ -54,40 +54,45 @@ export interface InputProps
    */
   rightIconContainerStyle?: StyleProp<ViewStyle>;
   /**
+   * 暂无用处
+   */
+  inputContainerStyle?: StyleProp<ViewStyle>;
+  /**
+  /**
    * TextInput输入框样式
    */
   inputStyle?: StyleProp<TextStyle>;
   /**
-   * TextInput
+   *  可替换默认提供的 TextInput
    * @type React Component
    */
   InputComponent?: React.ComponentType | React.ForwardRefExoticComponent<any>;
   /**
-   * props to be passed to the React Native Text component used to display the error message
+   * 错误提示信息Props
    */
   errorProps?: object;
   /**
-   * add styling to error message
+   * 错误提示信息样式
    */
   errorStyle?: StyleProp<TextStyle>;
   /**
-   * Error message to be displayed under the input field
+   * 错误提示信息
    */
   errorMessage?: string;
   /**
-   * add a label on top of the input
+   * 组件label 暂无用处
    */
   label?: string | React.ReactNode;
   /**
-   * styling for the label; You can only use this if label is a string
+   * label 样式
    */
   labelStyle?: StyleProp<TextStyle>;
   /**
-   * props to be passed to the React Native Text component used to display the label or React Component used instead of simple string in label prop
+   * label Props
    */
   labelProps?: object;
   /**
-   * If the error message container should be rendered (take up vertical space). If false, when showing errorMessage, the layout will shift to add it at that time.
+   * 是否显示错误信息
    */
   renderErrorMessage?: boolean;
 }
