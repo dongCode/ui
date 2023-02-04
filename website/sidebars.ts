@@ -63,6 +63,7 @@ module.exports = {
         },
         'components/divider',
         'components/fab',
+        'components/field',
         'components/header',
         'components/icon',
         'components/image',

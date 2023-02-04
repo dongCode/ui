@@ -1,0 +1,32 @@
+### 示例
+
+```SnackPlayer  Field
+import React from 'react';
+import Field from '@dplus/themed';
+
+function Memo(props: any) {
+  const { ...fieldAttributes } = props;
+
+  return (
+    <Field
+      name="memo"
+      rules={{
+        validate(text) {
+          const val = String(text)?.trim();
+          const isInRange = val.length <= CONST.RANGE.MAX.MEMO
+          const flag = isInRange;
+          return flag;
+        },
+      }}
+      containerStyle={{
+        backgroundColor: '#fff',
+        marginTop: 10,
+        paddingLeft: 32,
+      }}
+      placeholder="请输入备注"
+      {...fieldAttributes}
+    />
+  );
+}
+
+```

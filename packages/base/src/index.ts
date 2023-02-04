@@ -13,6 +13,7 @@ export * from './Chip';
 export * from './Dialog';
 export * from './Divider';
 export * from './FAB';
+export * from './Field';
 export * from './Header';
 export * from './Icon';
 export * from './Image';
