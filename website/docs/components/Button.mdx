@@ -1,6 +1,6 @@
 ---
 id: button
-title: Button 按钮
+title: Button
 ---
 
 import { IconsStyle } from "@site/src/components/Docs_Icons";
@@ -13,6 +13,7 @@ import Play from "@site/playground/Button/button.playground";
 
 <IconsStyle />
 
+Buttons are touchable elements used to interact with the screen and to perform and operation. They may display text, icons, or both. Buttons can be styled with several props to look a specific way.
 
 ## Usage
 
@@ -36,11 +37,9 @@ import Play from "@site/playground/Button/button.playground";
   </div>
 </div>
 
-### 类型 type
+### Variants
 
-默认solic
-文字按钮 clear
-仅显示边框 outline
+There are solid button, outline button and clear button types
 
 ```tsx live
 <Stack row align="center" spacing={4}>
@@ -50,8 +49,9 @@ import Play from "@site/playground/Button/button.playground";
 </Stack>
 ```
 
-### 大小 Size
+### Size
 
+Button can be small medium or large
 
 ```tsx live
 <Stack row align="center" spacing={4}>
@@ -61,7 +61,7 @@ import Play from "@site/playground/Button/button.playground";
 </Stack>
 ```
 
-### 颜色 Colors
+### Colors
 
 ```tsx live
 <Stack row align="center" spacing={4}>
@@ -72,7 +72,7 @@ import Play from "@site/playground/Button/button.playground";
 </Stack>
 ```
 
-### 禁用 Disabled
+### Disabled
 
 ```tsx live
 <Stack row align="center" spacing={4}>
@@ -82,7 +82,7 @@ import Play from "@site/playground/Button/button.playground";
 </Stack>
 ```
 
-### 渐变色 Linear Gradient
+### Linear Gradient
 
 ```tsx live
 <Button
@@ -97,8 +97,9 @@ import Play from "@site/playground/Button/button.playground";
 </Button>
 ```
 
-### 图标 Icon Button
+### Icon Button
 
+Can contain an Icon by setting the icon prop or placing an Icon component within the Button.
 
 ```tsx live
 <Button radius={"sm"} type="solid">
@@ -107,7 +108,7 @@ import Play from "@site/playground/Button/button.playground";
 </Button>
 ```
 
-### 加载中 Loading spinner
+### Loading spinner
 
 ```tsx live
 <Button title="Solid" type="solid" loading />
@@ -118,7 +119,7 @@ import Play from "@site/playground/Button/button.playground";
 ## Props
 
 :::note
-可传入原生组件[TouchableOpacityProps](https://reactnative.dev/docs/touchableopacity#props) 的所有属性.
+Includes all [TouchableOpacityProps](https://reactnative.dev/docs/touchableopacity#props) props.
 :::
 
 <div class='table-responsive'>

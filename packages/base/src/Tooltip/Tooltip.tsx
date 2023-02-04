@@ -18,19 +18,19 @@ import { getElementVisibleWidth } from './helpers/getTooltipCoordinate';
 import { getTooltipStyle } from './helpers/getTooltipStyle';
 
 export interface TooltipProps {
-  /** To show the tooltip. */
+  /** 是否显示 */
   visible?: boolean;
 
-  /** Flag to determine whether or not to display the pointer. */
+  /** 是否显示小箭头 */
   withPointer?: boolean;
 
-  /** Component to be rendered as the display container. */
+  /** 自定义弹出组件 */
   popover?: React.ReactElement<{}>;
 
-  /** Flag to determine to toggle or not the tooltip on press. */
+  /** 是否支持自身控制显示隐藏 */
   toggleOnPress?: boolean;
 
-  /** Define type of action that should trigger tooltip. Available options _onPress_, _onLongPress_ */
+  /** 自定义响应事件类型 */
   toggleAction?:
     | string
     | 'onPress'
@@ -38,49 +38,49 @@ export interface TooltipProps {
     | 'onPressIn'
     | 'onPressOut';
 
-  /** Tooltip container height. Necessary in order to render the container in the correct place. Pass height according to the size of the content rendered inside the container. */
+  /** 根据渲染内容，可自定义高度 */
   height?: number;
 
-  /** Tooltip container width. Necessary in order to render the container in the correct place. Pass height according to the size of the content rendered inside the container. */
+  /** 根据渲染内容，可自定义宽度 */
   width?: number;
 
-  /** Passes style object to tooltip container */
+  /** 最外层View样式 */
   containerStyle?: StyleProp<ViewStyle>;
 
-  /** Color of tooltip pointer, it defaults to the [`backgroundColor`](#backgroundcolor) if none is passed. */
+  /** 箭头颜色默认值是 [`backgroundColor`](#backgroundcolor) */
   pointerColor?: ColorValue;
 
-  /** Function which gets called on closing the tooltip. */
+  /** 关闭时的回调函数 */
   onClose?(): void;
 
-  /** Function which gets called on opening the tooltip. */
+  /** 打开时的回调函数 */
   onOpen?(): void;
 
-  /** Color of overlay shadow when tooltip is open. */
+  /** 遮罩层颜色 */
   overlayColor?: ColorValue;
 
-  /** Flag to determine whether or not display overlay shadow when tooltip is open. */
+  /** 是否显示遮罩层 */
   withOverlay?: boolean;
 
-  /** Sets backgroundColor of the tooltip and pointer. */
+  /** 设置背景颜色 */
   backgroundColor?: ColorValue;
 
-  /** Color to highlight the item the tooltip is surrounding. */
+  /** 高亮显示内容颜色 */
   highlightColor?: ColorValue;
 
-  /** Force skip StatusBar height when calculating element position. Pass `true` if Tooltip used inside react-native Modal component. */
+  /** 如果嵌套在原生Modal中，需要传递 true */
   skipAndroidStatusBar?: boolean;
 
-  /** Flag to determine whether to disable auto hiding of tooltip when touching/scrolling anywhere inside the active tooltip popover container. When `true`, Tooltip closes only when overlay backdrop is pressed (or) highlighted tooltip button is pressed. */
+  /** 点击遮罩层是否关闭 */
   closeOnlyOnBackdropPress?: boolean;
 
-  /** Override React Native `Modal` component (usable for web-platform). */
+  /** 覆盖Modal弹窗组件 */
   ModalComponent?: typeof React.Component;
 
-  /** Style to be applied on the pointer. */
+  /** 箭头样式 */
   pointerStyle?: StyleProp<ViewStyle>;
 
-  /** */
+  /** 动画样式 */
   animationType?: 'fade' | 'none';
 }
 
