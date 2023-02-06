@@ -26,7 +26,7 @@ export interface FieldProps extends React.ComponentProps<typeof Input> {
   auth?: boolean;
 }
 
-const Field: React.FC<FieldProps> = (props) => {
+export const Field: React.FC<FieldProps> = (props) => {
   const {
     name,
     rules,
@@ -73,4 +73,3 @@ const Field: React.FC<FieldProps> = (props) => {
     />
   );
 };
-export default Field;

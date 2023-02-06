@@ -1,4 +1,4 @@
-import Field, { FieldProps } from './Field';
+import { Field, FieldProps } from './Field';
 
 export { Field };
 

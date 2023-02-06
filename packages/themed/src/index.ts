@@ -47,6 +47,8 @@ import TabView, { TabViewProps } from './TabView';
 import Text, { TextProps } from './Text';
 import Tile, { TileProps } from './Tile';
 import Tooltip, { TooltipProps } from './Tooltip';
+import Field, { FieldProps } from './Field';
+import FormItem, { FormItemProps } from './FormItem';
 
 import {
   Colors,
@@ -88,6 +90,8 @@ export {
   Dialog,
   Divider,
   FAB,
+  Field,
+  FormItem,
   Header,
   Icon,
   Image,
@@ -143,6 +147,8 @@ export type {
   DialogTitleProps,
   DividerProps,
   FABProps,
+  FieldProps,
+  FormItemProps,
   HeaderProps,
   IconProps,
   ImageProps,

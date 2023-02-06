@@ -33,7 +33,9 @@ import Text from '../views/text';
 import Tabs from '../views/tabs';
 import Badge from '../views/badge';
 import WhatsappClone from '../views/whatsappClone';
-import Divider from '../views/Divider';
+import Divider from '../views/divider';
+import Field from '../views/field';
+import FormItem from '../views/formitem';
 
 const Drawer = createDrawerNavigator();
 
@@ -80,6 +82,9 @@ function RootNavigator() {
         <Drawer.Screen name="Dialogs" component={Dialogs} />
         <Drawer.Screen name="Divider" component={Divider} />
         <Drawer.Screen name="FAB" component={FAB} />
+        <Drawer.Screen name="Field" component={Field} />
+        <Drawer.Screen name="FormItem" component={FormItem} />
+
         <Drawer.Screen name="Fonts" component={Fonts} />
         <Drawer.Screen name="Image" component={Image} />
         <Drawer.Screen name="Inputs" component={Inputs} />

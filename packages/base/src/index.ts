@@ -1,5 +1,5 @@
 /**
- * RNE Base components
+ * Base components
  */
 export * from './AirbnbRating';
 export * from './Avatar';
@@ -14,6 +14,7 @@ export * from './Dialog';
 export * from './Divider';
 export * from './FAB';
 export * from './Field';
+export * from './FormItem';
 export * from './Header';
 export * from './Icon';
 export * from './Image';

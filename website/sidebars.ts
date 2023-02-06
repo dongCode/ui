@@ -64,6 +64,7 @@ module.exports = {
         'components/divider',
         'components/fab',
         'components/field',
+        'components/formitem',
         'components/header',
         'components/icon',
         'components/image',
