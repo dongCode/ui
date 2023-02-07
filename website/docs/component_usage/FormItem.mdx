@@ -1,0 +1,117 @@
+### 示例
+
+```SnackPlayer  Field
+import React, { useEffect, useState, useRef, useMemo } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert, Image } from 'react-native';
+import { useForm, FormProvider } from 'react-hook-form';
+
+
+
+const GoodsDetail = (props: any) => {
+  const { item, selfStyle = {}, setItem, routeParams, index, onChange } = props;
+  const [selectedGoodInfo, setSelectedGoodInfo] = useState<any>(item);
+  const modalRef = useRef<SelectErpStockDetailRef>(null);
+
+  const form = useForm({
+    mode: 'onBlur',
+    defaultValues: {},
+  });
+  const { handleSubmit, setValue, getValues } = form;
+
+  // 校验通过后才会走
+  const onSubmit = (data: any) => {
+  };
+
+ 
+  return (
+    <FormProvider {...form}>
+      <View>
+        <ScrollView>
+
+      
+
+            <FormItem name="stock_quantity" label="库存数量" editable={false} unit={item.delivery_unit} />
+            <FormItem name="basic_available_stock_quantity" label="可用库存" editable={false} unit={item.delivery_unit} />
+
+            <FormItem
+              name="quantity"
+              label="调出数量"
+              comp={<Quantity editable={orderStatus === 'INIT'} />}
+              unitComp={<Unit item={item} editable={orderStatus === 'INIT'} />}
+            />
+            <FormItem name="price" label="调出单价" comp={<Price auth={useHasAuth(['调出单/价格', '查询'])} editable={orderStatus === 'INIT' && useHasAuth(['调出单/价格', '编辑'])} />} unit="元" />
+            <FormItem name="money" label="调出金额" comp={<Money auth={useHasAuth(['调出单/价格', '查询'])} editable={orderStatus === 'INIT' && useHasAuth(['调出单/价格', '编辑'])} />} unit="元" />
+            <FormItem name="ratio" label="换算率" editable={false} unit='' />
+            <FormItem name="basic_quantity" label="基本数量" unit={item.basic_unit} editable={false} />
+            <FormItem name="basic_price" label="基本单价" auth={useHasAuth(['调出单/价格', '查询'])} unit="元" editable={false} />
+            <FormItem
+              name="present_quantity"
+              label="赠品数量"
+              comp={<PresentQuantity editable={orderStatus === 'INIT'} />}
+              unitComp={<Unit item={item} unitType="present" editable={orderStatus === 'INIT'} />}
+            />
+            <FormItem name="basic_present_quantity" label="赠品基本数量" editable={false} unit={item.basic_unit} />
+          </View>
+          <View style={{ backgroundColor: colors.white, paddingLeft: 10 }}>
+            <FormItem name="memo" label="备注" comp={<Memo editable={orderStatus === 'INIT'} />} />
+          </View>
+        </ScrollView>
+        {orderStatus === 'INIT' ? <TouchableOpacity style={styles.buttonBox} onPress={handleSubmit(onSubmit)}>
+          <View style={styles.primaryButton}>
+            <Text style={styles.primaryText}>确 定</Text>
+          </View>
+        </TouchableOpacity> : null}
+      </View >
+    </FormProvider >
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F0F0F0',
+  },
+  titleText: {
+    color: '#333',
+    fontWeight: 'bold',
+  },
+  baseInfo: {
+    backgroundColor: '#fff',
+    height: 160,
+    paddingHorizontal: 8,
+  },
+  titleBox: {
+    height: 40,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0F0F0',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 2,
+  },
+  buttonBox: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    height: 65,
+    borderTopColor: '#F4F4F4',
+    borderTopWidth: 1,
+  },
+  primaryButton: {
+    backgroundColor: colors.primary,
+    height: 40,
+    width: '80%',
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  primaryText: {
+    color: '#fff',
+  },
+});
+
+export default GoodsDetail;
+
+```
