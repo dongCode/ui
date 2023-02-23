@@ -1,0 +1,33 @@
+{
+  "name": "@dplus/utils",
+  "version": "4.0.2",
+  "description": "Utils",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "prepublish": "tsc --composite false",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "utils"
+  ],
+  "scripts": {
+    "npm-publish": "npm publish",
+    "build": "tsc --composite false",
+    "test": "jest",
+    "test:update": "jest -u",
+    "test:ci": "jest --runInBand",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "clean-install": "rimraf node_modules && yarn"
+  },
+  "author": "D",
+  "license": "MIT",
+  "dependencies": {
+    "number-precision": "^1.6.0"
+  }
+}

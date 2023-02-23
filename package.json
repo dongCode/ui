@@ -61,8 +61,7 @@
     ],
     "packages/**/*.{js,jsx}": [
       "eslint --fix",
-      "prettier --write",
-      "jest --bail --findRelatedTests"
+      "prettier --write"
     ],
     "**/*.md": [
       "prettier --single-quote --trailing-comma=es5 --write"

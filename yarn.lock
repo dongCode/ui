@@ -1600,6 +1600,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@dplus/utils@workspace:packages/utils":
+  version: 0.0.0-use.local
+  resolution: "@dplus/utils@workspace:packages/utils"
+  dependencies:
+    number-precision: ^1.6.0
+  languageName: unknown
+  linkType: soft
+
 "@egjs/hammerjs@npm:^2.0.17":
   version: 2.0.17
   resolution: "@egjs/hammerjs@npm:2.0.17"
@@ -15160,6 +15168,13 @@ __metadata:
   version: 1.0.1
   resolution: "number-is-nan@npm:1.0.1"
   checksum: 13656bc9aa771b96cef209ffca31c31a03b507ca6862ba7c3f638a283560620d723d52e626d57892c7fff475f4c36ac07f0600f14544692ff595abff214b9ffb
+  languageName: node
+  linkType: hard
+
+"number-precision@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "number-precision@npm:1.6.0"
+  checksum: fe715b90e25e3af21bfe5f94e436dc9e1ffd431bb1af0e7f4bef1e7875c5f7472e19bdf63e4aa22867503fd9c4e8a179567d685c16c1ed0bbf57554a36052aa2
   languageName: node
   linkType: hard
 
