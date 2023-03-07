@@ -36,6 +36,7 @@ import WhatsappClone from '../views/whatsappClone';
 import Divider from '../views/divider';
 import Field from '../views/field';
 import FormItem from '../views/formitem';
+import FixSlow from '../views/fix-slow';
 
 const Drawer = createDrawerNavigator();
 
@@ -106,6 +107,7 @@ function RootNavigator() {
         <Drawer.Screen name="Tiles" component={Tiles} />
         <Drawer.Screen name="Tooltip" component={Tooltip} />
         <Drawer.Screen name="Whatsapp Clone" component={WhatsappClone} />
+        <Drawer.Screen name="Fix Slow" component={FixSlow} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
